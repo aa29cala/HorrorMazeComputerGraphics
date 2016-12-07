@@ -19,6 +19,21 @@ class horror(viz.EventClass):
 		self.starttimer(1, .25, viz.FOREVER)
 		self.starttimer(2, 1, viz.FOREVER)
 		
+		#start background music
+		self.background = viz.addAudio('bellLoop.wav')
+		self.background.loop(viz.ON)
+		self.background.play()
+		
+		#set up tick sound
+		self.tick = viz.addAudio('tickingSound.wav')
+		self.panic = viz.addAudio('HurryMechanic.wav')
+		
+		#set up key music
+		self.tensionRed = viz.addAudio('Tension Loop1.wav')
+		self.tensionRed.loop(viz.ON)
+		self.tensionBlue = viz.addAudio('Tension Loop2.wav')
+		self.tensionBlue.loop(viz.ON)
+		
 		#creat sphere to go around the player camera / add physics
 		self.view = viz.MainView 
 		self.cambox = vizshape.addSphere(radius = .5, stacks = 40, slices = 40, color = viz.WHITE)
@@ -26,7 +41,7 @@ class horror(viz.EventClass):
 		self.cambox.enable(viz.COLLIDE_NOTIFY)
 		
 		#create urgency variable 
-		self.timelimit = 300
+		self.timelimit = 290
 		self.text = viz.addText( str(self.timelimit), viz.SCREEN, pos = [.85,.85,0] )
 		self.text.color(viz.RED)
 		self.text.font("High Tower Text")
@@ -208,6 +223,8 @@ class horror(viz.EventClass):
 		self.starttimer(4, .25, viz.FOREVER)
 		
 	def pickUpRedKey(self):
+		self.background.pause()
+		self.tensionRed.play()
 		self.keyRed = True
 		self.keyRMod.visible( viz.OFF )
 		self.keyRY += 5
@@ -220,6 +237,8 @@ class horror(viz.EventClass):
 		self.keyRMod.setMatrix( mat )
 		
 	def pickUpBlueKey(self):
+		self.background.pause()
+		self.tensionBlue.play()
 		self.keyBlue = True
 		self.keyBMod.visible( viz.OFF )
 		self.keyBY += 5
@@ -341,6 +360,12 @@ class horror(viz.EventClass):
 		self.setView()
 		if num == 2:
 			self.timelimit -= 1
+			self.tick.play()
+			if self.timelimit <= 22:
+				self.tensionBlue.pause()
+				self.tensionRed.pause()
+				self.background.pause()
+				self.panic.play()
 			self.setHUD()
 			
 		elif num == 3: #blue gate rise
