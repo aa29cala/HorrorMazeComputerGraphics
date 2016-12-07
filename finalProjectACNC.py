@@ -4,6 +4,7 @@ import viz
 import math
 import vizshape
 import vizfx
+import sys
 
 class horror(viz.EventClass):
 
@@ -43,6 +44,11 @@ class horror(viz.EventClass):
 		self.sprinting.loop(viz.ON)
 		self.sprinting.setRate(1.6)
 		
+		#set up Fog
+		viz.fogcolor(0,0,0)
+		viz.fog(2,20)
+		
+		
 		#creat sphere to go around the player camera / add physics
 		self.view = viz.MainView 
 		self.cambox = vizshape.addSphere(radius = .5, stacks = 40, slices = 40, color = viz.WHITE)
@@ -50,7 +56,7 @@ class horror(viz.EventClass):
 		self.cambox.enable(viz.COLLIDE_NOTIFY)
 		
 		#create urgency variable 
-		self.timelimit = 290
+		self.timelimit = 300 #normally 290
 		self.text = viz.addText( str(self.timelimit), viz.SCREEN, pos = [.85,.85,0] )
 		self.text.color(viz.RED)
 		self.text.font("High Tower Text")
@@ -367,8 +373,8 @@ class horror(viz.EventClass):
 			
 	
 	def onTimer(self,num):
-		#print "self.x" + str(self.x)
-		#print "self.z" + str(self.z)
+		print "self.x" + str(self.x)
+		print "self.z" + str(self.z)
 		
 		self.setView()
 		if num == 2:
@@ -379,6 +385,9 @@ class horror(viz.EventClass):
 				self.tensionRed.pause()
 				self.background.pause()
 				self.panic.play()
+			elif self.timelimit == 0:
+				pass
+				
 			self.setHUD()
 			
 		elif num == 3: #blue gate rise
@@ -414,7 +423,8 @@ class horror(viz.EventClass):
 
 #Set Window
 #viz.window.setSize( 640*2, 480*2 )
-viz.window.setSize( 1920, 1080 )
+#viz.window.setSize( 1920, 1080 )
+viz.window.setFullscreenMonitor( viz.AUTO_COMPUTE )
 viz.window.setName( "Final Horror Project" )
 
 #Turn on Physics engine
@@ -422,8 +432,6 @@ viz.phys.enable()
 
 #Set Window Fullscreen / Background Color / 4x AntiAliasing / FOV 
 viz.window.setBorder(viz.BORDER_NONE)
-#viz.MainWindow.clearcolor( viz.BLACK ) 
-
 
 viz.setMultiSample(4)
 viz.fov(60)
@@ -439,7 +447,7 @@ viz.mouse.setVisible(viz.OFF)
 h = horror()
 
 
-
+#create sky gif
 def addBackgroundQuad(scene=viz.MainScene):
 		group = viz.addGroup(scene=scene)
 		group.leftQuad = viz.addRenderNode()
@@ -460,17 +468,22 @@ background = addBackgroundQuad()
 texture = viz.add('mazeBackground.gif')
 background.texture(texture) 
 
+#publish settings
+viz.setOption('viz.publish.load_message','Horror Maze Enabled')
+viz.setOption('viz.publish.load_title','Horror Maze v1')
+viz.setOption('viz.publish.persistent', 1)
+viz.setOption('viz.publish.company','Siena College Computer Graphics')
+viz.setOption('viz.publish.product','HorrorMaze')
+#viz.setOption('viz.window.icon', 'icon.ico')
+
 #render scene
-viz.go()
-
-
-#Implement Audio in the game
+viz.go( viz.FULLSCREEN)
 
 
 #Self.quit for timer running out
 #Endgame mechanics
 #plot
 #Notes into the environment
-#Fog
-#Menu
 #publish as an exe
+
+#Menu
