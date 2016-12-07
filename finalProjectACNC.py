@@ -15,6 +15,7 @@ class horror(viz.EventClass):
 		self.callback(viz.KEYDOWN_EVENT,self.onKeyDown)
 		self.callback(viz.MOUSE_MOVE_EVENT,self.cameraMove)
 		self.callback(viz.TIMER_EVENT, self.onTimer)
+		self.callback(viz.KEYUP_EVENT, self.onKeyUp)
 		self.callback(viz.COLLIDE_BEGIN_EVENT,self.onCollideBegin)
 		self.starttimer(1, .25, viz.FOREVER)
 		self.starttimer(2, 1, viz.FOREVER)
@@ -26,6 +27,7 @@ class horror(viz.EventClass):
 		
 		#set up tick sound
 		self.tick = viz.addAudio('tickingSound.wav')
+		self.tick.volume(.8)
 		self.panic = viz.addAudio('HurryMechanic.wav')
 		
 		#set up key music
@@ -33,6 +35,13 @@ class horror(viz.EventClass):
 		self.tensionRed.loop(viz.ON)
 		self.tensionBlue = viz.addAudio('Tension Loop2.wav')
 		self.tensionBlue.loop(viz.ON)
+		
+		#set up footsteps
+		self.walking = viz.addAudio('Footsteps.wav')
+		self.walking.loop(viz.ON)
+		self.sprinting = viz.addAudio('Footsteps.wav')
+		self.sprinting.loop(viz.ON)
+		self.sprinting.setRate(1.6)
 		
 		#creat sphere to go around the player camera / add physics
 		self.view = viz.MainView 
@@ -279,7 +288,18 @@ class horror(viz.EventClass):
 		self.my = e.y
 		#Update camera
 		self.setView()
-			
+		
+	def onKeyUp(self,key):
+		if key == self.sprint:
+			self.sprinting.stop()
+		elif key == self.moveForward:
+			self.walking.stop()
+		elif key == self.moveBackward:
+			self.walking.stop()
+		elif key == self.moveRight:
+			self.walking.stop()
+		elif key == self.moveLeft:
+			self.walking.stop()
 		
 	def onKeyDown(self,key):
 		#store current position
@@ -297,34 +317,27 @@ class horror(viz.EventClass):
 		if key == self.sprint:
 			self.x += self.dx *2 *.1
 			self.z += self.dz *2 *.1
+			self.sprinting.play()
 			
 		elif key == self.moveForward:
 			self.x += self.dx*.15
 			self.z += self.dz*.15
+			self.walking.play()
 			
 		elif key == self.moveBackward:
 			self.x -= self.dx*.15
 			self.z -= self.dz*.15
+			self.walking.play()
 			
 		elif key == self.moveRight:
 			self.x += sx*.15
 			self.z += sz*.15
+			self.walking.play()
 			
 		elif key == self.moveLeft:
 			self.x -= sx*.15
 			self.z -= sz*.15
-			
-		elif key == 'j':
-			print 'j'
-			self.x = -89
-			self.z = 30
-			self.setView()
-			
-		elif key == 'k':
-			print 'k'
-			self.x = -120
-			self.z = -89
-			self.setView()
+			self.walking.play()
 			
 		elif key == self.interact:
 			self.interaction()
