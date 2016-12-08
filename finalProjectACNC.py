@@ -214,6 +214,7 @@ class horror(viz.EventClass):
 		
 		#Set Up Object Variables 
 		#set up blue gate
+		self.gateBMod.visible( viz.ON )
 		self.gateBX = -124
 		self.gateBY = 0
 		self.gateBZ = 30
@@ -222,9 +223,9 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(1,0,0,90)
 		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
 		self.gateBMod.setMatrix( mat )
-		self.gateBMod.visible( viz.ON )
 		
 		#set up red gate
+		self.gateRMod.visible( viz.ON )
 		self.gateRX = -138.52
 		self.gateRY = 0
 		self.gateRZ = -59
@@ -234,9 +235,9 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(1,0,0,90)
 		mat.postTrans(self.gateRX,self.gateRY,self.gateRZ)
 		self.gateRMod.setMatrix( mat )
-		self.gateRMod.visible( viz.ON )
 	
 		#set up red key
+		self.keyRMod.visible( viz.ON )
 		self.keyRX = -91.9
 		self.keyRY = 1.82
 		self.keyRZ = 33.5
@@ -245,9 +246,9 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(0,0,1,180)
 		mat.postTrans(self.keyRX,self.keyRY,self.keyRZ)
 		self.keyRMod.setMatrix( mat )
-		self.keyRMod.visible( viz.ON )
 		
 		#set up blue key
+		self.keyBMod.visible( viz.ON )
 		self.keyBX = -122
 		self.keyBY = 1.82
 		self.keyBZ = -90.8
@@ -256,7 +257,6 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(0,0,1,180)
 		mat.postTrans(self.keyBX,self.keyBY,self.keyBZ)
 		self.keyBMod.setMatrix( mat )
-		self.keyBMod.visible( viz.ON )
 		
 		#Player holding key variables
 		self.keyBlue = False
@@ -556,7 +556,7 @@ viz.setOption('viz.publish.load_title','Horror Maze v1')
 viz.setOption('viz.publish.persistent', 1)
 viz.setOption('viz.publish.company','Siena College Computer Graphics')
 viz.setOption('viz.publish.product','HorrorMaze')
-#viz.setOption('viz.window.icon', 'icon.ico')
+viz.setOption('viz.window.icon', 'illumPentIcon.ico')
 
 #render scene
 #viz.go( viz.FULLSCREEN)
