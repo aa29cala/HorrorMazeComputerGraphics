@@ -48,6 +48,10 @@ class horror(viz.EventClass):
 		viz.fogcolor(0,0,0)
 		viz.fog(2,20)
 		
+		#set up endgame mechanic
+		self.endgame = False
+		self.endMusic = viz.addAudio('Beginning.wav')
+		self.endMusic.loop(viz.ON)
 		
 		#creat sphere to go around the player camera / add physics
 		self.view = viz.MainView 
@@ -97,10 +101,6 @@ class horror(viz.EventClass):
 		#Velocity vector
 		self.dx = math.cos( math.radians( self.angleLtRt ) )
 		self.dz = math.sin( math.radians( self.angleLtRt ) )
-		
-		#Mouse coordinates
-		self.mx = 0
-		self.my = 0
 		
 		#Set Up Object Variables 
 		#set up blue gate
@@ -178,8 +178,6 @@ class horror(viz.EventClass):
 		self.maze.texture( self.walls )
 		
 		
-		
-		
 	def setView(self):
 		#Update the camera
 		mat = viz.Matrix()
@@ -202,7 +200,71 @@ class horror(viz.EventClass):
 		self.text.color(viz.RED)
 		self.text.message(str(self.timelimit))
 		
+	def endGame(self):
+		self.x = -4.6
+		self.y = 1.82
+		self.z = 3.3
+		self.angleLtRt = 180
+		self.angleUpDw = -10
+		self.setView()
 		
+		#Set Up Object Variables 
+		#set up blue gate
+		self.gateBX = -124
+		self.gateBY = 0
+		self.gateBZ = 30
+		mat = viz.Matrix()
+		mat.postScale(.3,.3,.3)
+		mat.postAxisAngle(1,0,0,90)
+		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
+		self.gateBMod.setMatrix( mat )
+		self.gateBMod.visible( viz.ON )
+		
+		#set up red gate
+		self.gateRX = -138.52
+		self.gateRY = 0
+		self.gateRZ = -59
+		mat = viz.Matrix()
+		mat.postScale(.3,.3,.3)
+		mat.postAxisAngle(0,0,1,90)
+		mat.postAxisAngle(1,0,0,90)
+		mat.postTrans(self.gateRX,self.gateRY,self.gateRZ)
+		self.gateRMod.setMatrix( mat )
+		self.gateRMod.visible( viz.ON )
+	
+		#set up red key
+		self.keyRX = -91.9
+		self.keyRY = 1.82
+		self.keyRZ = 33.5
+		mat = viz.Matrix()
+		mat.postAxisAngle(0,1,0,90)
+		mat.postAxisAngle(0,0,1,180)
+		mat.postTrans(self.keyRX,self.keyRY,self.keyRZ)
+		self.keyRMod.setMatrix( mat )
+		self.keyRMod.visible( viz.ON )
+		
+		#set up blue key
+		self.keyBX = -122
+		self.keyBY = 1.82
+		self.keyBZ = -90.8
+		mat = viz.Matrix()
+		mat.postAxisAngle(0,1,0,90)
+		mat.postAxisAngle(0,0,1,180)
+		mat.postTrans(self.keyBX,self.keyBY,self.keyBZ)
+		self.keyBMod.setMatrix( mat )
+		self.keyBMod.visible( viz.ON )
+		
+		#Player holding key variables
+		self.keyBlue = False
+		self.keyRed = False
+		
+		#resetsound
+		self.background.stop()
+		self.tensionBlue.stop()
+		self.tensionRed.stop()
+		self.endMusic.stop()
+
+		self.endgame = True
 		
 	def interaction(self):
 		#handle interactions here
@@ -239,6 +301,8 @@ class horror(viz.EventClass):
 		
 	def pickUpRedKey(self):
 		self.background.pause()
+		self.endgame.pause()
+		self.tensionBlue.pause()
 		self.tensionRed.play()
 		self.keyRed = True
 		self.keyRMod.visible( viz.OFF )
@@ -253,6 +317,8 @@ class horror(viz.EventClass):
 		
 	def pickUpBlueKey(self):
 		self.background.pause()
+		self.endgame.pause()
+		self.tensionRed.pause()
 		self.tensionBlue.play()
 		self.keyBlue = True
 		self.keyBMod.visible( viz.OFF )
@@ -410,6 +476,14 @@ class horror(viz.EventClass):
 			mat.postAxisAngle(1,0,0,90)
 			mat.postTrans(self.gateRX,self.gateRY,self.gateRZ)
 			self.gateRMod.setMatrix( mat )
+			
+		dist = math.hypot(-189.99 - self.x, -56.23 - self.z)
+		if (dist <= 5):
+			self.endGame()
+			
+		dist = math.hypot(-23.006 - self.x, 2.574 - self.z)
+		if (dist <= 5 and self.endgame == True):
+			self.endMusic.play()
 	
 	def onCollideBegin(self,e):
 		#print e.obj1, e.obj2
@@ -422,8 +496,10 @@ class horror(viz.EventClass):
 #Driver
 
 #Set Window
-#viz.window.setSize( 640*2, 480*2 )
+viz.window.setSize( 640*2, 480*2 )
 #viz.window.setSize( 1920, 1080 )
+
+
 viz.window.setFullscreenMonitor( viz.AUTO_COMPUTE )
 viz.window.setName( "Final Horror Project" )
 
@@ -445,7 +521,7 @@ viz.mouse.setVisible(viz.OFF)
 
 #Create Environment
 h = horror()
-
+	
 
 #create sky gif
 def addBackgroundQuad(scene=viz.MainScene):
@@ -477,13 +553,11 @@ viz.setOption('viz.publish.product','HorrorMaze')
 #viz.setOption('viz.window.icon', 'icon.ico')
 
 #render scene
-viz.go( viz.FULLSCREEN)
+#viz.go( viz.FULLSCREEN)
+viz.go()
 
-
-#Self.quit for timer running out
 #Endgame mechanics
-#plot
-#Notes into the environment
-#publish as an exe
+#plot #Notes into the environment
 
+#publish as an exe
 #Menu
