@@ -209,8 +209,8 @@ class horror(viz.EventClass):
 		self.setView()
 		
 		#kill gate timers
-		viz.killtimer(3)
-		viz.killtimer(4)
+		self.killtimer(3)
+		self.killtimer(4)
 		
 		#Set Up Object Variables 
 		#set up blue gate
@@ -464,7 +464,7 @@ class horror(viz.EventClass):
 			self.gateBY = self.gateBY + 2
 			if self.gateBY >= 30:
 				self.gateBMod.visible(viz.OFF)
-				viz.killtimer(3)
+				self.killtimer(3)
 			mat = viz.Matrix()
 			mat.postScale(.3,.3,.3)
 			mat.postAxisAngle(1,0,0,90)
@@ -475,7 +475,7 @@ class horror(viz.EventClass):
 			self.gateRY = self.gateRY + 2
 			if self.gateRY >= 30:
 				self.gateRMod.visible(viz.OFF)
-				viz.killtimer(4)
+				self.killtimer(4)
 			mat = viz.Matrix()
 			mat.postScale(.3,.3,.3)
 			mat.postAxisAngle(0,0,1,90)
@@ -502,7 +502,7 @@ class horror(viz.EventClass):
 #Driver
 
 #Set Window
-viz.window.setSize( 640*2, 480*2 )
+#viz.window.setSize( 640*2, 480*2 )
 #viz.window.setSize( 1920, 1080 )
 
 
@@ -552,15 +552,15 @@ background.texture(texture)
 
 #publish settings
 viz.setOption('viz.publish.load_message','Horror Maze Enabled')
-viz.setOption('viz.publish.load_title','Horror Maze v1')
+viz.setOption('viz.publish.load_title','Horror Maze')
 viz.setOption('viz.publish.persistent', 1)
 viz.setOption('viz.publish.company','Siena College Computer Graphics')
 viz.setOption('viz.publish.product','HorrorMaze')
 viz.setOption('viz.window.icon', 'illumPentIcon.ico')
 
 #render scene
-#viz.go( viz.FULLSCREEN)
-viz.go()
+viz.go( viz.FULLSCREEN)
+#viz.go()
 
 #Endgame mechanics
 #plot #Notes into the environment
