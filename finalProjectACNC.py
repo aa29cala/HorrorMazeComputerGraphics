@@ -208,6 +208,10 @@ class horror(viz.EventClass):
 		self.angleUpDw = -10
 		self.setView()
 		
+		#kill gate timers
+		viz.killtimer(3)
+		viz.killtimer(4)
+		
 		#Set Up Object Variables 
 		#set up blue gate
 		self.gateBX = -124
@@ -301,7 +305,7 @@ class horror(viz.EventClass):
 		
 	def pickUpRedKey(self):
 		self.background.pause()
-		self.endgame.pause()
+		self.endMusic.pause()
 		self.tensionBlue.pause()
 		self.tensionRed.play()
 		self.keyRed = True
@@ -317,7 +321,7 @@ class horror(viz.EventClass):
 		
 	def pickUpBlueKey(self):
 		self.background.pause()
-		self.endgame.pause()
+		self.endMusic.pause()
 		self.tensionRed.pause()
 		self.tensionBlue.play()
 		self.keyBlue = True
@@ -460,6 +464,7 @@ class horror(viz.EventClass):
 			self.gateBY = self.gateBY + 2
 			if self.gateBY >= 30:
 				self.gateBMod.visible(viz.OFF)
+				viz.killtimer(3)
 			mat = viz.Matrix()
 			mat.postScale(.3,.3,.3)
 			mat.postAxisAngle(1,0,0,90)
@@ -467,9 +472,10 @@ class horror(viz.EventClass):
 			self.gateBMod.setMatrix( mat )	
 			
 		elif num == 4: #red gate rise
-			self.gateRY = self.gateRY + .2
+			self.gateRY = self.gateRY + 2
 			if self.gateRY >= 30:
 				self.gateRMod.visible(viz.OFF)
+				viz.killtimer(4)
 			mat = viz.Matrix()
 			mat.postScale(.3,.3,.3)
 			mat.postAxisAngle(0,0,1,90)
