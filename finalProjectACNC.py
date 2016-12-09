@@ -48,6 +48,15 @@ class horror(viz.EventClass):
 		viz.fogcolor(0,0,0)
 		viz.fog(2,20)
 		
+		#set up plot text / corresponding audio
+		self.textOne = viz.addText('You Were Here...')
+		self.textOne.color(viz.RED)
+		self.textOne.font("High Tower Text")
+		self.textOne.setAxisAngle(0,1,0,270)
+		self.textOne.setPosition(-23.5,1.82,-1)
+		self.textOneAudio = viz.addAudio('ywh.wav')
+		self.textOnePlayed = False
+	
 		#set up endgame mechanic
 		self.endgame = False
 		self.endMusic = viz.addAudio('Beginning.wav')
@@ -201,12 +210,16 @@ class horror(viz.EventClass):
 		self.text.message(str(self.timelimit))
 		
 	def endGame(self):
+		#teleport player
 		self.x = -4.6
 		self.y = 1.82
 		self.z = 3.3
 		self.angleLtRt = 180
 		self.angleUpDw = -10
 		self.setView()
+
+		#reset text audio
+		self.textOnePlayed = False
 		
 		#kill gate timers
 		self.killtimer(3)
@@ -488,8 +501,13 @@ class horror(viz.EventClass):
 			self.endGame()
 			
 		dist = math.hypot(-23.006 - self.x, 2.574 - self.z)
-		if (dist <= 5 and self.endgame == True):
+		if (dist <= 16 and self.endgame == True):
 			self.endMusic.play()
+			
+		if (dist <= 16 and self.textOnePlayed == False):
+			self.textOnePlayed = True
+			self.textOneAudio.play()
+			
 	
 	def onCollideBegin(self,e):
 		#print e.obj1, e.obj2
@@ -562,8 +580,5 @@ viz.setOption('viz.window.icon', 'illumPentIcon.ico')
 viz.go( viz.FULLSCREEN)
 #viz.go()
 
-#Endgame mechanics
 #plot #Notes into the environment
-
-#publish as an exe
 #Menu
