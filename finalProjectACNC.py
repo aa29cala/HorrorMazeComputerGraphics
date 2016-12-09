@@ -22,25 +22,25 @@ class horror(viz.EventClass):
 		self.starttimer(2, 1, viz.FOREVER)
 		
 		#start background music
-		self.background = viz.addAudio('bellLoop.wav')
+		self.background = viz.addAudio('audio/bellLoop.wav')
 		self.background.loop(viz.ON)
 		self.background.play()
 		
 		#set up tick sound
-		self.tick = viz.addAudio('tickingSound.wav')
+		self.tick = viz.addAudio('audio/tickingSound.wav')
 		self.tick.volume(.8)
-		self.panic = viz.addAudio('HurryMechanic.wav')
+		self.panic = viz.addAudio('audio/HurryMechanic.wav')
 		
 		#set up key music
-		self.tensionRed = viz.addAudio('Tension Loop1.wav')
+		self.tensionRed = viz.addAudio('audio/Tension Loop1.wav')
 		self.tensionRed.loop(viz.ON)
-		self.tensionBlue = viz.addAudio('Tension Loop2.wav')
+		self.tensionBlue = viz.addAudio('audio/Tension Loop2.wav')
 		self.tensionBlue.loop(viz.ON)
 		
 		#set up footsteps
-		self.walking = viz.addAudio('Footsteps.wav')
+		self.walking = viz.addAudio('audio/Footsteps.wav')
 		self.walking.loop(viz.ON)
-		self.sprinting = viz.addAudio('Footsteps.wav')
+		self.sprinting = viz.addAudio('audio/Footsteps.wav')
 		self.sprinting.loop(viz.ON)
 		self.sprinting.setRate(1.6)
 		
@@ -54,12 +54,12 @@ class horror(viz.EventClass):
 		self.textOne.font("High Tower Text")
 		self.textOne.setAxisAngle(0,1,0,270)
 		self.textOne.setPosition(-23.5,1.82,-1)
-		self.textOneAudio = viz.addAudio('ywh.wav')
+		self.textOneAudio = viz.addAudio('audio/ywh.wav')
 		self.textOnePlayed = False
 	
 		#set up endgame mechanic
 		self.endgame = False
-		self.endMusic = viz.addAudio('Beginning.wav')
+		self.endMusic = viz.addAudio('audio/Beginning.wav')
 		self.endMusic.loop(viz.ON)
 		
 		#creat sphere to go around the player camera / add physics
@@ -113,7 +113,7 @@ class horror(viz.EventClass):
 		
 		#Set Up Object Variables 
 		#set up blue gate
-		self.gateBMod = viz.addChild('BlueGate.wrl')
+		self.gateBMod = viz.addChild('models/BlueGate.wrl')
 		self.gateBX = -124
 		self.gateBY = 0
 		self.gateBZ = 30
@@ -125,7 +125,7 @@ class horror(viz.EventClass):
 		self.gateBMod.collideMesh()
 		
 		#set up red gate
-		self.gateRMod = viz.addChild('RedGate.wrl')
+		self.gateRMod = viz.addChild('models/RedGate.wrl')
 		self.gateRX = -138.52
 		self.gateRY = 0
 		self.gateRZ = -59
@@ -138,7 +138,7 @@ class horror(viz.EventClass):
 		self.gateRMod.collideMesh()
 	
 		#set up red key
-		self.keyRMod = viz.addChild('RedKey.wrl')
+		self.keyRMod = viz.addChild('models/RedKey.wrl')
 		self.keyRX = -91.9
 		self.keyRY = 1.82
 		self.keyRZ = 33.5
@@ -150,7 +150,7 @@ class horror(viz.EventClass):
 		self.keyRMod.collideMesh()
 		
 		#set up blue key
-		self.keyBMod = viz.addChild('BlueKey.wrl')
+		self.keyBMod = viz.addChild('models/BlueKey.wrl')
 		self.keyBX = -122
 		self.keyBY = 1.82
 		self.keyBZ = -90.8
@@ -167,7 +167,7 @@ class horror(viz.EventClass):
 		
 
 		#Add the maze environment
-		self.maze = viz.addChild('HorrorMazeFinal.wrl')
+		self.maze = viz.addChild('models/HorrorMazeFinal.wrl')
 		mat = viz.Matrix()
 		mat.postScale(.3,.3,.3)
 		mat.postAxisAngle(0,0,1,90)
@@ -180,7 +180,7 @@ class horror(viz.EventClass):
 		effect = vizfx.addAmbientEffect(color=viz.RED)
 		self.maze.apply(effect)
 		
-		self.walls = viz.addTexture('Diamond_Box.jpg')
+		self.walls = viz.addTexture('images/Diamond_Box.jpg')
 		self.walls.wrap(viz.WRAP_S, viz.REPEAT)
 		self.walls.wrap(viz.WRAP_T, viz.REPEAT)
 		self.walls.wrap(viz.WRAP_R, viz.REPEAT)
@@ -525,7 +525,7 @@ class horror(viz.EventClass):
 
 
 viz.window.setFullscreenMonitor( viz.AUTO_COMPUTE )
-viz.window.setName( "Final Horror Project" )
+viz.window.setName( "Labyrinth of Sins" )
 
 #Turn on Physics engine
 viz.phys.enable()
@@ -565,16 +565,16 @@ def addBackgroundQuad(scene=viz.MainScene):
 		return group
 
 background = addBackgroundQuad()
-texture = viz.add('mazeBackground.gif')
+texture = viz.add('images/mazeBackground.gif')
 background.texture(texture) 
 
 #publish settings
-viz.setOption('viz.publish.load_message','Horror Maze Enabled')
-viz.setOption('viz.publish.load_title','Horror Maze')
+viz.setOption('viz.publish.load_message','Labyrinth of Sins')
+viz.setOption('viz.publish.load_title','Labyrinth of Sins')
 viz.setOption('viz.publish.persistent', 1)
 viz.setOption('viz.publish.company','Siena College Computer Graphics')
-viz.setOption('viz.publish.product','HorrorMaze')
-viz.setOption('viz.window.icon', 'illumPentIcon.ico')
+viz.setOption('viz.publish.product','Labyrinth of Sins')
+viz.setOption('viz.window.icon', 'images/illumPentIcon.ico')
 
 #render scene
 viz.go( viz.FULLSCREEN)
