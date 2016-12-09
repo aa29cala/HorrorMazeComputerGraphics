@@ -138,7 +138,7 @@ class horror(viz.EventClass):
 		self.cambox.enable(viz.COLLIDE_NOTIFY)
 		
 		#create urgency variable 
-		self.timelimit = 300 #normally 290
+		self.timelimit = 300 #Set for 5 minutes 
 		self.text = viz.addText( str(self.timelimit), viz.SCREEN, pos = [.85,.85,0] )
 		self.text.color(viz.RED)
 		self.text.font("High Tower Text")
@@ -256,6 +256,7 @@ class horror(viz.EventClass):
 		self.walls.wrap(viz.WRAP_R, viz.REPEAT)
 		self.maze.texture( self.walls )
 		
+		#end contrsuctor
 		
 	def setView(self):
 		#Update the camera
@@ -278,89 +279,6 @@ class horror(viz.EventClass):
 	def setHUD(self):
 		self.text.color(viz.RED)
 		self.text.message(str(self.timelimit))
-		
-	def endGame(self):
-		#teleport player
-		self.x = -4.6
-		self.y = 1.82
-		self.z = 3.3
-		self.angleLtRt = 180
-		self.angleUpDw = -10
-		self.setView()
-
-		#reset text audio
-		self.textOnePlayed = False
-		self.textTwoPlayed = False
-		self.textThreePlayed = False
-		self.textFourPlayed = False
-		self.textFivePlayed = False
-		self.textSixPlayed = False
-		self.textSevenPlayed = False
-		self.textEightPlayed = False
-		self.textNinePlayed = False
-		self.textTenPlayed = False
-		
-		#kill gate timers
-		self.killtimer(3)
-		self.killtimer(4)
-		
-		#Set Up Object Variables 
-		#set up blue gate
-		self.gateBMod.visible( viz.ON )
-		self.gateBX = -124
-		self.gateBY = 0
-		self.gateBZ = 30
-		mat = viz.Matrix()
-		mat.postScale(.3,.3,.3)
-		mat.postAxisAngle(1,0,0,90)
-		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
-		self.gateBMod.setMatrix( mat )
-		
-		#set up red gate
-		self.gateRMod.visible( viz.ON )
-		self.gateRX = -138.52
-		self.gateRY = 0
-		self.gateRZ = -59
-		mat = viz.Matrix()
-		mat.postScale(.3,.3,.3)
-		mat.postAxisAngle(0,0,1,90)
-		mat.postAxisAngle(1,0,0,90)
-		mat.postTrans(self.gateRX,self.gateRY,self.gateRZ)
-		self.gateRMod.setMatrix( mat )
-	
-		#set up red key
-		self.keyRMod.visible( viz.ON )
-		self.keyRX = -91.9
-		self.keyRY = 1.82
-		self.keyRZ = 33.5
-		mat = viz.Matrix()
-		mat.postAxisAngle(0,1,0,90)
-		mat.postAxisAngle(0,0,1,180)
-		mat.postTrans(self.keyRX,self.keyRY,self.keyRZ)
-		self.keyRMod.setMatrix( mat )
-		
-		#set up blue key
-		self.keyBMod.visible( viz.ON )
-		self.keyBX = -122
-		self.keyBY = 1.82
-		self.keyBZ = -90.8
-		mat = viz.Matrix()
-		mat.postAxisAngle(0,1,0,90)
-		mat.postAxisAngle(0,0,1,180)
-		mat.postTrans(self.keyBX,self.keyBY,self.keyBZ)
-		self.keyBMod.setMatrix( mat )
-		
-		#Player holding key variables
-		self.keyBlue = False
-		self.keyRed = False
-		
-		#resetsound
-		self.background.stop()
-		self.tensionBlue.stop()
-		self.tensionRed.stop()
-		self.endMusic.stop()
-
-		self.endgame = True
 		
 	def interaction(self):
 		#handle interactions here
@@ -385,7 +303,6 @@ class horror(viz.EventClass):
 		dist = math.hypot(self.keyBX - self.x, self.keyBZ - self.z)
 		if dist <= 5 and self.keyBlue == False:
 			self.pickUpBlueKey()
-			
 		else:
 			pass
 		
@@ -531,11 +448,94 @@ class horror(viz.EventClass):
 			self.z = prevZ
 			self.x = prevX
 			self.setView()
-			
+		
+	def endGame(self):
+		#teleport player
+		self.x = -4.6
+		self.y = 1.82
+		self.z = 3.3
+		self.angleLtRt = 180
+		self.angleUpDw = -10
+		self.setView()
+
+		#reset text audio
+		self.textOnePlayed = False
+		self.textTwoPlayed = False
+		self.textThreePlayed = False
+		self.textFourPlayed = False
+		self.textFivePlayed = False
+		self.textSixPlayed = False
+		self.textSevenPlayed = False
+		self.textEightPlayed = False
+		self.textNinePlayed = False
+		self.textTenPlayed = False
+		
+		#kill gate timers
+		self.killtimer(3)
+		self.killtimer(4)
+		
+		#Set Up Object Variables 
+		#set up blue gate
+		self.gateBMod.visible( viz.ON )
+		self.gateBX = -124
+		self.gateBY = 0
+		self.gateBZ = 30
+		mat = viz.Matrix()
+		mat.postScale(.3,.3,.3)
+		mat.postAxisAngle(1,0,0,90)
+		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
+		self.gateBMod.setMatrix( mat )
+		
+		#set up red gate
+		self.gateRMod.visible( viz.ON )
+		self.gateRX = -138.52
+		self.gateRY = 0
+		self.gateRZ = -59
+		mat = viz.Matrix()
+		mat.postScale(.3,.3,.3)
+		mat.postAxisAngle(0,0,1,90)
+		mat.postAxisAngle(1,0,0,90)
+		mat.postTrans(self.gateRX,self.gateRY,self.gateRZ)
+		self.gateRMod.setMatrix( mat )
+	
+		#set up red key
+		self.keyRMod.visible( viz.ON )
+		self.keyRX = -91.9
+		self.keyRY = 1.82
+		self.keyRZ = 33.5
+		mat = viz.Matrix()
+		mat.postAxisAngle(0,1,0,90)
+		mat.postAxisAngle(0,0,1,180)
+		mat.postTrans(self.keyRX,self.keyRY,self.keyRZ)
+		self.keyRMod.setMatrix( mat )
+		
+		#set up blue key
+		self.keyBMod.visible( viz.ON )
+		self.keyBX = -122
+		self.keyBY = 1.82
+		self.keyBZ = -90.8
+		mat = viz.Matrix()
+		mat.postAxisAngle(0,1,0,90)
+		mat.postAxisAngle(0,0,1,180)
+		mat.postTrans(self.keyBX,self.keyBY,self.keyBZ)
+		self.keyBMod.setMatrix( mat )
+		
+		#Player holding key variables
+		self.keyBlue = False
+		self.keyRed = False
+		
+		#resetsound
+		self.background.stop()
+		self.tensionBlue.stop()
+		self.tensionRed.stop()
+		self.endMusic.stop()
+
+		#set endgame music
+		self.endgame = True
 	
 	def onTimer(self,num):
-		print "self.x" + str(self.x)
-		print "self.z" + str(self.z)
+		#print "self.x" + str(self.x)
+		#print "self.z" + str(self.z)
 		
 		self.setView()
 		if num == 2:
@@ -579,7 +579,7 @@ class horror(viz.EventClass):
 			self.endGame()
 			
 		dist = math.hypot(-23.006 - self.x, 2.574 - self.z) #realization
-		if (dist <= 16 and self.endgame == True):
+		if (dist <= 13 and self.endgame == True):
 			self.endMusic.play()
 			
 		if (dist <= 16 and self.textOnePlayed == False): #audio plot 1
@@ -637,21 +637,16 @@ class horror(viz.EventClass):
 		self.x -=  ( self.dx / 3.9 ) + 1
 		self.setView()
 	
-	
-
 #Driver
-
-#Set Window
-#viz.window.setSize( 640*2, 480*2 )
-viz.window.setFullscreenMonitor( viz.AUTO_COMPUTE )
-viz.window.setName( "Labyrinth of Sins" )
 
 #Turn on Physics engine
 viz.phys.enable()
 
-#Set Window Fullscreen / Background Color / 4x AntiAliasing / FOV 
+#Set Window / Background Color / 4x AntiAliasing / FOV 
+#viz.window.setSize( 640*2, 480*2 )
+viz.window.setName( "Labyrinth of Sins" )
 viz.window.setBorder(viz.BORDER_NONE)
-
+viz.window.setFullscreenMonitor( viz.AUTO_COMPUTE )
 viz.setMultiSample(4)
 viz.fov(60)
 
