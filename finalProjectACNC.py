@@ -587,47 +587,47 @@ class horror(viz.EventClass):
 			self.textOneAudio.play()
 			
 		dist = math.hypot(-58.75 - self.x, 19.15 - self.z) #audio plot 2
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 16 and self.textTwoPlayed == False):
 			self.textTwoPlayed = True
 			self.textTwoAudio.play()
 			
 		dist = math.hypot(-66.25 - self.x, -5.8 - self.z) #audio plot 3
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 7.3 and self.textThreePlayed == False):
 			self.textThreePlayed = True
 			self.textThreeAudio.play()
 			
 		dist = math.hypot(-100.4 - self.x, 3.9 - self.z) #audio plot 4
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 8 and self.textFourPlayed == False):
 			self.textFourPlayed = True
 			self.textFourAudio.play()
 			
 		dist = math.hypot(-181.3 - self.x, 53.1 - self.z) #audio plot 5
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 16 and self.textFivePlayed == False):
 			self.textFivePlayed = True
 			self.textFiveAudio.play()
 			
 		dist = math.hypot(-35.63 - self.x, -13.4 - self.z) #audio plot 6
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 12 and self.textSixPlayed == False):
 			self.textSixPlayed = True
 			self.textSixAudio.play()
 			
 		dist = math.hypot(-13.3 - self.x, -58.9 - self.z) #audio plot 7
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 16 and self.textSevenPlayed == False):
 			self.textSevenPlayed = True
 			self.textSevenAudio.play()
 			
 		dist = math.hypot(-78.85 - self.x, -94.3 - self.z) #audio plot 8
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 16 and self.textEightPlayed == False):
 			self.textEightPlayed = True
 			self.textEightAudio.play()
 			
 		dist = math.hypot(-124 - self.x, -45.5 - self.z) #audio plot 9
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 8.5 and self.textNinePlayed == False):
 			self.textNinePlayed = True
 			self.textNineAudio.play()
 			
 		dist = math.hypot(-176.88 - self.x, -75.4 - self.z) #audio plot 10
-		if (dist <= 16 and self.textOnePlayed == False):
+		if (dist <= 10 and self.textTenPlayed == False):
 			self.textTenPlayed = True
 			self.textTenAudio.play()
 	
