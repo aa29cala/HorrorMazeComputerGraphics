@@ -1,5 +1,5 @@
-# HorrorMazeComputerGraphics
-This is Nate Cefarelli's and Anthony Calabrese final project for computer graphics
+Labyrinth of Sine - Computer Graphics Final Project
+Authors: Anthony Calabrese & Nate Cefarelli
 
 HOW TO PLAY:
 
@@ -23,6 +23,7 @@ Brightness Settings -
 9 is the brightest
 0 is default settings
 
+Quit - escape
 
 1) You Were Here...
 2) Your Soul Devoid...
