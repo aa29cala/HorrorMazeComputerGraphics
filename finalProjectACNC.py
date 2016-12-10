@@ -440,6 +440,77 @@ class horror(viz.EventClass):
 		elif key == viz.KEY_UP:
 			self.angleUpDw += 3
 			
+		#Brightness Settings
+		elif key == '1':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(1.8)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '2': 
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(.2)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '3':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(.4)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '4':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(.6)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '5':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(.8)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '6':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(1)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '7':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(1.2)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '8':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(1.4)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '9':
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(1.6)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(80)
+			self.view.getHeadLight().spotexponent(60)
+			
+		elif key == '0':  #default Brightness
+			self.view.getHeadLight().color(.2,.2,.2)
+			self.view.getHeadLight().intensity(.05)
+			self.view.getHeadLight().spread(180)
+			self.view.getHeadLight().quadraticattenuation(100)
+			self.view.getHeadLight().spotexponent(60)
+			
 		#Update Camera
 		self.setView()
 		
