@@ -55,74 +55,83 @@ class horror(viz.EventClass):
 		self.textOneAudio = viz.addAudio('../audio/va1.wav')
 		self.textOnePlayed = False
 		
-		self.textTwo = viz.addText('Your Soul Devoid...') #set 2
+		self.textTwo = viz.addText('Your Soul \n Devoid...') #set 2
 		self.textTwo.color(viz.RED)
 		self.textTwo.font("High Tower Text")
+		self.textTwo.setScale(.7,.7,.7)
 		self.textTwo.setAxisAngle(0,1,0,270)
-		self.textTwo.setPosition(-58.75,1.82,19.15)
+		self.textTwo.setPosition(-58.75,1.82,18.5)
 		self.textTwoAudio = viz.addAudio('../audio/va2.wav')
 		self.textTwoPlayed = False
 		
-		self.textThree = viz.addText('For Eternity, You Shall Morph Into Your Pain...') #set 3
+		self.textThree = viz.addText('For Eternity, \n You Shall \n Morph Into \n Your Pain...') #set 3
 		self.textThree.color(viz.RED)
 		self.textThree.font("High Tower Text")
+		self.textThree.setScale(.7,.7,.7)
 		self.textThree.setAxisAngle(0,1,0,180)
-		self.textThree.setPosition(-66.25,1.82,-5.8)
+		self.textThree.setPosition(-66.25,3,-5.8)
 		self.textThreeAudio = viz.addAudio('../audio/va5.wav')
 		self.textThreePlayed = False
 		
-		self.textFour = viz.addText('Where Your Eyes Are Ripped Through Your Spine!') #set 4
+		self.textFour = viz.addText('Where Your \n Eyes Are \n Ripped \n Through \n Your Spine!') #set 4
 		self.textFour.color(viz.RED)
 		self.textFour.font("High Tower Text")
+		self.textFour.setScale(.7,.7,.7)
 		self.textFour.setAxisAngle(0,1,0,90)
-		self.textFour.setPosition(-100.4,1.82,3.9)
+		self.textFour.setPosition(-100.4,4,4.3)
 		self.textFourAudio = viz.addAudio('../audio/va6.wav')
 		self.textFourPlayed = False
 		
-		self.textFive = viz.addText('For My Almighty Eye To Gaze Upon Your Torment...') #set 5
+		self.textFive = viz.addText('For My \n Almighty Eye \n To Gaze \n Upon Your \n Torment...') #set 5
 		self.textFive.color(viz.RED)
 		self.textFive.font("High Tower Text")
-		self.textFive.setPosition(-181.3,1.82,53.1)
+		self.textFive.setScale(.7,.7,.7)
+		self.textFive.setPosition(-182.3,4,53.1)
 		self.textFiveAudio = viz.addAudio('../audio/va10.wav')
 		self.textFivePlayed = False
 		
-		self.textSix = viz.addText('There Is No Salvation As I Starve Your Lungs From Within') #set 6
+		self.textSix = viz.addText('There Is \n No \n Salvation \n As I \n Starve Your \n Lungs From \n Within') #set 6
 		self.textSix.color(viz.RED)
 		self.textSix.font("High Tower Text")
+		self.textSix.setScale(.7,.7,.7)
 		self.textSix.setAxisAngle(0,1,0,90)
-		self.textSix.setPosition(-35.63,1.82,-13.4)
+		self.textSix.setPosition(-35.63,5,-12.9)
 		self.textSixAudio = viz.addAudio('../audio/va4.wav')
 		self.textSixPlayed = False
 		
-		self.textSeven = viz.addText('Tainted By Your Actions, Your sins...') #set 7
+		self.textSeven = viz.addText('Tainted By \n Your Actions, \n Your sins...') #set 7
 		self.textSeven.color(viz.RED)
 		self.textSeven.font("High Tower Text")
+		self.textSeven.setScale(.7,.7,.7)
 		self.textSeven.setAxisAngle(0,1,0,180)
 		self.textSeven.setPosition(-13.3,1.82,-58.9)
 		self.textSevenAudio = viz.addAudio('../audio/va3.wav')
 		self.textSevenPlayed = False
 		
-		self.textEight = viz.addText('As You Are Crushed Multidimensionally') #set 8
+		self.textEight = viz.addText('As You \n Are Crushed \n Multidimensionally') #set 8
 		self.textEight.color(viz.RED)
 		self.textEight.font("High Tower Text")
+		self.textEight.setScale(.7,.7,.7)
 		self.textEight.setAxisAngle(0,1,0,180)
-		self.textEight.setPosition(-78.85,1.82,-94.3)
+		self.textEight.setPosition(-77.85,3,-94.3)
 		self.textEightAudio = viz.addAudio('../audio/va7.wav')
 		self.textEightPlayed = False
 		
-		self.textNine = viz.addText('As Your Sanity Crumbles...') #set 9
+		self.textNine = viz.addText('As Your \n Sanity \n Crumbles...') #set 9
 		self.textNine.color(viz.RED)
 		self.textNine.font("High Tower Text")
+		self.textNine.setScale(.7,.7,.7)
 		self.textNine.setAxisAngle(0,1,0,270)
 		self.textNine.setPosition(-124,1.82,-45.5)
 		self.textNineAudio = viz.addAudio('../audio/va8.wav')
 		self.textNinePlayed = False
 		
-		self.textTen = viz.addText('Here You Shall Stay, Under The Nocturnal Sun...') #set 10
+		self.textTen = viz.addText('Here You \n Shall Stay, \n Under The \n Nocturnal Sun...') #set 10
 		self.textTen.color(viz.RED)
 		self.textTen.font("High Tower Text")
+		self.textTen.setScale(.7,.7,.7)
 		self.textTen.setAxisAngle(0,1,0,270)
-		self.textTen.setPosition(-176.88,1.82,-75.4)
+		self.textTen.setPosition(-176.88,4,-75.9)
 		self.textTenAudio = viz.addAudio('../audio/va9.wav')
 		self.textTenPlayed = False
 	
@@ -191,7 +200,7 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(1,0,0,90)
 		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
 		self.gateBMod.setMatrix( mat )
-		self.gateBMod.collideMesh()
+		#self.gateBMod.collideMesh()
 		
 		#set up red gate
 		self.gateRMod = viz.addChild('../models/RedGate.wrl')
