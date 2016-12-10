@@ -1,5 +1,5 @@
 Labyrinth of Sine - Computer Graphics Final Project
-Authors: Anthony Calabrese & Nate Cefarelli
+Developers: Anthony Calabrese & Nate Cefarelli
 
 HOW TO PLAY:
 
