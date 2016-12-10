@@ -200,7 +200,7 @@ class horror(viz.EventClass):
 		mat.postAxisAngle(1,0,0,90)
 		mat.postTrans(self.gateBX,self.gateBY,self.gateBZ)
 		self.gateBMod.setMatrix( mat )
-		#self.gateBMod.collideMesh()
+		self.gateBMod.collideMesh()
 		
 		#set up red gate
 		self.gateRMod = viz.addChild('../models/RedGate.wrl')
