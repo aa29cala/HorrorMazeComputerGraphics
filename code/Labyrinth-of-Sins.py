@@ -52,7 +52,7 @@ class horror(viz.EventClass):
 		self.textOne.font("High Tower Text") 
 		self.textOne.setAxisAngle(0,1,0,270)
 		self.textOne.setPosition(-23.5,1.82,-1)
-		self.textOneAudio = viz.addAudio('../audio/ywh.wav')
+		self.textOneAudio = viz.addAudio('../audio/va1.wav')
 		self.textOnePlayed = False
 		
 		self.textTwo = viz.addText('Text 2') #set
@@ -60,7 +60,7 @@ class horror(viz.EventClass):
 		self.textTwo.font("High Tower Text")
 		self.textTwo.setAxisAngle(0,1,0,270)
 		self.textTwo.setPosition(-58.75,1.82,19.15)
-		self.textTwoAudio = viz.addAudio('../audio/ywh.wav')
+		self.textTwoAudio = viz.addAudio('../audio/va1.wav')
 		self.textTwoPlayed = False
 		
 		self.textThree = viz.addText('Text 3') #set
@@ -68,7 +68,7 @@ class horror(viz.EventClass):
 		self.textThree.font("High Tower Text")
 		self.textThree.setAxisAngle(0,1,0,180)
 		self.textThree.setPosition(-66.25,1.82,-5.8)
-		self.textThreeAudio = viz.addAudio('../audio/ywh.wav')
+		self.textThreeAudio = viz.addAudio('../audio/va1.wav')
 		self.textThreePlayed = False
 		
 		self.textFour = viz.addText('Text 4') #set
@@ -76,14 +76,14 @@ class horror(viz.EventClass):
 		self.textFour.font("High Tower Text")
 		self.textFour.setAxisAngle(0,1,0,90)
 		self.textFour.setPosition(-100.4,1.82,3.9)
-		self.textFourAudio = viz.addAudio('../audio/ywh.wav')
+		self.textFourAudio = viz.addAudio('../audio/va1.wav')
 		self.textFourPlayed = False
 		
 		self.textFive = viz.addText('Text 5') #set
 		self.textFive.color(viz.RED)
 		self.textFive.font("High Tower Text")
 		self.textFive.setPosition(-181.3,1.82,53.1)
-		self.textFiveAudio = viz.addAudio('../audio/ywh.wav')
+		self.textFiveAudio = viz.addAudio('../audio/va1.wav')
 		self.textFivePlayed = False
 		
 		self.textSix = viz.addText('Text 6') #set
@@ -91,7 +91,7 @@ class horror(viz.EventClass):
 		self.textSix.font("High Tower Text")
 		self.textSix.setAxisAngle(0,1,0,90)
 		self.textSix.setPosition(-35.63,1.82,-13.4)
-		self.textSixAudio = viz.addAudio('../audio/ywh.wav')
+		self.textSixAudio = viz.addAudio('../audio/va1.wav')
 		self.textSixPlayed = False
 		
 		self.textSeven = viz.addText('Text 7') #set
@@ -99,7 +99,7 @@ class horror(viz.EventClass):
 		self.textSeven.font("High Tower Text")
 		self.textSeven.setAxisAngle(0,1,0,180)
 		self.textSeven.setPosition(-13.3,1.82,-58.9)
-		self.textSevenAudio = viz.addAudio('../audio/ywh.wav')
+		self.textSevenAudio = viz.addAudio('../audio/va1.wav')
 		self.textSevenPlayed = False
 		
 		self.textEight = viz.addText('Text 8') #set
@@ -107,7 +107,7 @@ class horror(viz.EventClass):
 		self.textEight.font("High Tower Text")
 		self.textEight.setAxisAngle(0,1,0,180)
 		self.textEight.setPosition(-78.85,1.82,-94.3)
-		self.textEightAudio = viz.addAudio('../audio/ywh.wav')
+		self.textEightAudio = viz.addAudio('../audio/va1.wav')
 		self.textEightPlayed = False
 		
 		self.textNine = viz.addText('Text 9') #set
@@ -115,7 +115,7 @@ class horror(viz.EventClass):
 		self.textNine.font("High Tower Text")
 		self.textNine.setAxisAngle(0,1,0,270)
 		self.textNine.setPosition(-124,1.82,-45.5)
-		self.textNineAudio = viz.addAudio('../audio/ywh.wav')
+		self.textNineAudio = viz.addAudio('../audio/va1.wav')
 		self.textNinePlayed = False
 		
 		self.textTen = viz.addText('Text 10') #set
@@ -123,7 +123,7 @@ class horror(viz.EventClass):
 		self.textTen.font("High Tower Text")
 		self.textTen.setAxisAngle(0,1,0,270)
 		self.textTen.setPosition(-176.88,1.82,-75.4)
-		self.textTenAudio = viz.addAudio('../audio/ywh.wav')
+		self.textTenAudio = viz.addAudio('../audio/va1.wav')
 		self.textTenPlayed = False
 	
 		#set up endgame mechanic
