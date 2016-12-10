@@ -609,6 +609,7 @@ class horror(viz.EventClass):
 		self.tensionBlue.stop()
 		self.tensionRed.stop()
 		self.endMusic.stop()
+		self.panic.stop()
 
 		#set endgame music
 		self.endgame = True
@@ -621,7 +622,7 @@ class horror(viz.EventClass):
 		if num == 2:
 			self.timelimit -= 1
 			self.tick.play()
-			if self.timelimit <= 22:
+			if self.timelimit <= 22 and self.endgame == False:
 				self.tensionBlue.pause()
 				self.tensionRed.pause()
 				self.background.pause()
